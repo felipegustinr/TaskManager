@@ -1,0 +1,27 @@
+$colorprimary: rgb(7, 180, 50);
+$colorsecond: whitesmoke;
+
+.navbar.navbar-expand-lg {
+  background-color: $colorprimary;
+
+  .container-fluid {
+   
+
+    
+    a{
+      color: $colorsecond;
+      .nav-link.active-register{
+        background-color: $colorprimary;
+      }
+    }
+    a:hover{
+      zoom: 1;
+    }
+
+    button {
+      color:$colorprimary
+    }
+
+    
+  }
+}
