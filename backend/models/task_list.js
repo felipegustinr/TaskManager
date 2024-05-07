@@ -34,15 +34,15 @@ module.exports = sequelize => {
         model: "user_model"
       }
     },
-    create_at: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
-      defaultValue: null,
-      comment: null,
-      primaryKey: false,
-      field: "create_at",
-      autoIncrement: false
-    }
+    // create_at: {
+    //   type: DataTypes.DATEONLY,
+    //   allowNull: true,
+    //   defaultValue:DataTypes.DATEONLY,
+    //   comment: null,
+    //   primaryKey: false,
+    //   field: "create_at",
+    //   autoIncrement: false
+    // }
   };
   const options = {
     tableName: "task_list",
