@@ -22,7 +22,7 @@ export class UserService {
   };
   addUser(user: any): Observable<any> {
     let route = [environment.apiUrl, 'user'].join('/');
-    return this.http.post(route, user);
+    return this.http.post(route,user);
   };
   editUser(user: any, id: any): Observable<any> {
     let route = [environment.apiUrl, 'user', id].join('/');
