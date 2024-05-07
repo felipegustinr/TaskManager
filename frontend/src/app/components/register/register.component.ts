@@ -1,31 +1,53 @@
 import { Component, OnInit } from '@angular/core';
-import { Route, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+  styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent {
-  constructor(private UserService: UserService) { }
+export class RegisterComponent implements OnInit {
+  is_ok = false;
+  is_error = false;
+  is_empty = false;
 
-  registerUser(event: Event): void {
-    event.preventDefault();
-    const fullName = (event.target as HTMLFormElement).elements.namedItem('fullName');
-    const email = (event.target as HTMLFormElement).elements.namedItem('email');
-    const password = (event.target as HTMLFormElement).elements.namedItem('password');
+  user = {
+    name: '',
+    email: '',
+    password: ''
+  };
 
-    const newUser = { fullName, email, password };
-    this.UserService.addUser(newUser).subscribe(
-      (response) => {
-        console.log('User registered successfully:', response);
-        // Aquí puedes agregar lógica adicional después de registrar al usuario
-      },
-      (error) => {
-        console.error('Error registering user:', error);
-        // Aquí puedes manejar errores si ocurren durante el registro
-      }
-    );
+  constructor(
+    private userService: UserService
+  ) { }
+
+  ngOnInit(): void {
+  }
+
+  registerUser() {
+    console.log(this.user);
+    if (
+      this.user.name.length !== 0 &&
+      this.user.email.length !== 0 &&
+      this.user.password.length !== 0
+    ) {
+      this.userService.addUser(this.user).subscribe({
+        next: (data => {
+          this.is_ok = true;
+          this.is_error = false;
+          this.is_empty = false;
+          console.log(data);
+        }),
+        error: (err => {
+          this.is_ok = false;
+          this.is_error = true;
+          this.is_empty = true;
+          console.error(err);
+        })
+      });
+    } else {
+      this.is_empty = true;
+    }
   }
 }
