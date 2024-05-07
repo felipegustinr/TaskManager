@@ -10,7 +10,7 @@ var usersRouter = require('./routes/users');
 var userRouter = require('./routes/user');
 var task_listRouter = require('./routes/task_list');
 var taskRouter = require('./routes/task');
-
+var loginRouter = require('./routes/login');
 
 var app = express();
 
@@ -18,6 +18,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(cors());
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -27,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/user', userRouter);
 app.use('/task_list', task_listRouter);
 app.use('/task', taskRouter);
-
+app.use('/login',loginRouter)
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
