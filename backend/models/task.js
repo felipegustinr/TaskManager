@@ -39,19 +39,19 @@ module.exports = sequelize => {
       field: "completed",
       autoIncrement: false
     },
-    create_at: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
-      defaultValue: null,
-      comment: null,
-      primaryKey: false,
-      field: "create_at",
-      autoIncrement: false
-    },
+    // create_at: {
+    //   type: DataTypes.DATEONLY,
+    //   allowNull: false,
+    //   defaultValue: null,
+    //   comment: null,
+    //   primaryKey: false,
+    //   field: "create_at",
+    //   autoIncrement: false
+    // },
     list_id: {
       type: DataTypes.BIGINT,
       allowNull: false,
-      defaultValue: null,
+      defaultValue: DataTypes.DATEONLY,
       comment: null,
       primaryKey: false,
       field: "list_id",
