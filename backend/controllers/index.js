@@ -8,5 +8,5 @@ module.exports = {
     task_listController,
     taskController,
     rolController,
-    loginController
+    loginController,
 };
