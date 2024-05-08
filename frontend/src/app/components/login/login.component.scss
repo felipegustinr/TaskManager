@@ -1,0 +1,29 @@
+$primarycolor:#07B432;
+.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+    .card-title{
+        color: $primarycolor  ;
+        margin-bottom: 2rem ;
+        text-align: center;
+        font-size: 2rem;
+    }
+    button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $primarycolor;
+        margin: auto;
+        border: none;
+    }
+}
+i{
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    color: $primarycolor;
+}
