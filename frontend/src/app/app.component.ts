@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
     this.isLoggedIn = this.loginService.isLoggedIn();
     if (this.isLoggedIn) {
       this.username = this.loginService.getUsername();
+      console.log('Username:', this.username)
     }
   }
   logout(): void {

@@ -4,7 +4,7 @@ const User = require('../models').user_model;
 function generateToken(user) {
     const payload = {
         email: user.email,
-        username: user.name
+        username: user.name,
     };
     return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
 }

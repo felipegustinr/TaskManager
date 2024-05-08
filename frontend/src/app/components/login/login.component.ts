@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // Check if email and password are not empty
+
     if (!this.email || !this.password) {
       this.loginError = 'Please enter an email and a password';
       return;
@@ -29,11 +29,16 @@ export class LoginComponent implements OnInit {
     this.isLoggingIn = true;
     this.loginService.login(this.email, this.password).subscribe(
       response => {
-        // Store the token in localStorage
+      
         localStorage.setItem('token', response.token);
 
-        // Redirect to the home page
-        this.router.navigate(['/task']);
+
+        this.loginService.setUsername(response.usename)
+
+
+        this.router.navigate(['/task']).then(() => {
+          window.location.reload();
+        });
       },
       error => {
         console.error('Login error:', error);
