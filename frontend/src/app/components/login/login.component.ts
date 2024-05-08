@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', response.token);
 
         // Redirect to the home page
-        this.router.navigate(['/administration']);
+        this.router.navigate(['/task']);
       },
       error => {
         console.error('Login error:', error);

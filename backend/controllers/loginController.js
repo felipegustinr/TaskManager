@@ -4,7 +4,7 @@ const User = require('../models').user_model;
 function generateToken(user) {
     const payload = {
         email: user.email,
-
+        username: user.name
     };
     return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
 }
@@ -25,7 +25,7 @@ module.exports = {
 
                 const token = generateToken(user);
 
-                return res.status(200).json({ token });
+                return res.status(200).json({ token, username: user.name });
             })
             .catch(error => {
                 console.error('Error finding user:', error);

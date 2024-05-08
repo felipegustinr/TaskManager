@@ -9,14 +9,28 @@ $colorsecond: whitesmoke;
 
     a {
       color: $colorsecond;
-      .nav-link.active-register {
-        background-color: $colorprimary;
-      }
     }
 
- 
     button {
       color: $colorprimary;
+    }
+  }
+}
+
+.nav-link.active-user, .nav-link.active-register {
+  background-color: $colorprimary;
+  color: $colorprimary;
+}
+
+@media (max-width: 991px) {
+  .navbar.navbar-expand-lg {
+    .container-fluid {
+      a {
+        .nav-link.active-register, .nav-link.active-user {
+          background-color: $colorprimary;
+          color: $colorprimary;
+        }
+      }
     }
   }
 }
