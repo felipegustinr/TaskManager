@@ -5,23 +5,18 @@ $colorsecond: whitesmoke;
   background-color: $colorprimary;
 
   .container-fluid {
-   
+    justify-content: space-between;
 
-    
-    a{
+    a {
       color: $colorsecond;
-      .nav-link.active-register{
+      .nav-link.active-register {
         background-color: $colorprimary;
       }
     }
-    a:hover{
-      zoom: 1;
-    }
 
+ 
     button {
-      color:$colorprimary
+      color: $colorprimary;
     }
-
-    
   }
 }
