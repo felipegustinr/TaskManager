@@ -19,26 +19,26 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // Verificar que el email y la contraseña no estén vacíos
+    // Check if email and password are not empty
     if (!this.email || !this.password) {
-      this.loginError = 'Por favor ingresa un email y una contraseña';
+      this.loginError = 'Please enter an email and a password';
       return;
     }
 
-    // Iniciar sesión
+    // Log in
     this.isLoggingIn = true;
     this.loginService.login(this.email, this.password).subscribe(
       response => {
-        // Almacenar el token en el localStorage
+        // Store the token in localStorage
         localStorage.setItem('token', response.token);
 
-        // Redirigir a la página de inicio
+        // Redirect to the home page
         this.router.navigate(['/administration']);
       },
       error => {
-        console.error('Error de inicio de sesión:', error);
+        console.error('Login error:', error);
         this.isLoggingIn = false;
-        this.loginError = 'Credenciales incorrectas. Por favor intenta de nuevo.';
+        this.loginError = 'Incorrect credentials. Please try again.';
       }
     );
   }
