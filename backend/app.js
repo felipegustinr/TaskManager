@@ -6,11 +6,11 @@ var logger = require('morgan');
 var cors = require('cors');
 
 var indexRouter = require('./routes/index');
+var loginRouter = require('./routes/login');
 var usersRouter = require('./routes/users');
 var userRouter = require('./routes/user');
 var task_listRouter = require('./routes/task_list');
 var taskRouter = require('./routes/task');
-var loginRouter = require('./routes/login');
 
 var app = express();
 
@@ -27,9 +27,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Rutas generales deben definirse antes de rutas más específicas
 app.use('/', indexRouter);
-app.use('/login',loginRouter);
+// app.use('/login',loginRouter);
 app.use('/users', usersRouter);
 app.use('/user', userRouter);
+app.use('/user',loginRouter)
 app.use('/task_list', task_listRouter);
 app.use('/task', taskRouter);
 
