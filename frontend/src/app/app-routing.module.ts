@@ -5,6 +5,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { TaskComponent } from './components/task/task.component';
 import { AdministrationComponent } from './components/administration/administration.component';
+import { loginGuard } from './guards/login/login.guard';
 
 const routes: Routes = [
   {
@@ -17,10 +18,10 @@ const routes: Routes = [
     path: 'login', component: LoginComponent
   },
   {
-    path: 'task', component: TaskComponent
+    path: 'task', component: TaskComponent, canActivate: [loginGuard]
   },
   {
-    path:'administration', component:AdministrationComponent
+    path:'administration', component:AdministrationComponent, canActivate: [loginGuard]
   }
 ];
 
