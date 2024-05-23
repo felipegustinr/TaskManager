@@ -28,7 +28,7 @@ export class LoginService {
 
   logout(): void {
     localStorage.removeItem('token');
-    localStorage.removeItem('usename');
+    localStorage.removeItem('username');
   }
 }
 

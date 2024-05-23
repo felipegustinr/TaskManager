@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', response.token);
 
 
-        this.loginService.setUsername(response.usename)
+        this.loginService.setUsername(response.username)
 
 
         this.router.navigate(['/task']).then(() => {
