@@ -9,6 +9,7 @@ export class LoginService {
 
   private tokenKey = 'token';
   private usernameKey = 'username';
+  private userIdKey = 'userId'
 
   constructor(private http: HttpClient) { }
 
@@ -29,6 +30,14 @@ export class LoginService {
     localStorage.setItem(this.usernameKey, username);
   }
 
+  getUserId():string | null{
+    return localStorage.getItem(this.userIdKey);
+  }
+
+  setUserId(userId:string):void{
+    localStorage.setItem(this.userIdKey,userId)
+  }
+
   setToken(token: string): void {
     localStorage.setItem(this.tokenKey, token);
   }
@@ -40,5 +49,6 @@ export class LoginService {
   logout(): void {
     localStorage.removeItem(this.tokenKey);
     localStorage.removeItem(this.usernameKey);
+    localStorage.removeItem(this.userIdKey)
   }
 }
