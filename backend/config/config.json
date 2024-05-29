@@ -1,20 +1,20 @@
 {
   "development": {
-    "username": "admin",
+    "username": "postgres",
     "password": "unicesmag",
     "database": "taskManager",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "username": "admin",
+    "username": "postgres",
     "password": "unicesmag",
     "database": "taskManager",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
-    "username": "admin",
+    "username": "postgres",
     "password": "unicesmag",
     "database": "taskManager",
     "host": "127.0.0.1",

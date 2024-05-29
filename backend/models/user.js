@@ -42,7 +42,7 @@ module.exports = sequelize => {
     rol_id: {
       type: DataTypes.BIGINT,
       allowNull: false,
-      defaultValue: 1,
+      defaultValue: 2,
       comment: null,
       primaryKey: false,
       field: "rol_id",
