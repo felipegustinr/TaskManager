@@ -13,7 +13,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string): Observable<any> {
-    return this.http.post<any>('http://localhost:3000/user/login', { email, password });
+    return this.http.post<any>('http://localhost:3001/user/login', { email, password });
   }
 
   isLoggedIn(): boolean {
