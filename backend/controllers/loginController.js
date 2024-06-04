@@ -6,6 +6,7 @@ function generateToken(user) {
     const payload = {
         email: user.email,
         username: user.name,
+        id: user.id 
     };
     return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
 }
@@ -31,8 +32,9 @@ module.exports = {
                     }
 
                     const token = generateToken(user);
+                    console.log('Login response:', { token, username: user.name, id: user.id }); 
 
-                    return res.status(200).json({ token, username: user.name });
+                    return res.status(200).json({ token, username: user.name, id: user.id }); 
                 });
             })
             .catch(error => {

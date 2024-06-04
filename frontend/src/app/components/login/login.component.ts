@@ -32,8 +32,9 @@ export class LoginComponent implements OnInit {
       
         localStorage.setItem('token', response.token);
 
-
         this.loginService.setUsername(response.username)
+
+        this.loginService.setUserId(response.id)
 
 
         this.router.navigate(['/task']).then(() => {

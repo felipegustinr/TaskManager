@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   title = 'frontend';
   isLoggedIn: boolean = false;
   username: string = '';
+  userId: string = '';
 
   constructor(private loginService: LoginService) { }
 
@@ -19,6 +20,9 @@ export class AppComponent implements OnInit {
     if (this.isLoggedIn) {
       this.username = this.loginService.getUsername();
       console.log('Username:', this.username)
+     this.userId =this.loginService.getUserId()
+      console.log('Userid:',this.userId)
+      
     }
   }
   logout(): void {
