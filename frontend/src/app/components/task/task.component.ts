@@ -71,7 +71,7 @@ export class TaskComponent implements OnInit {
   createTask(taskList: TaskList) {
     const title = this.newTaskTitles[taskList.id]?.trim();
     if (title) {
-      const task = { title, description: '', completed: false, list_id: taskList.id }; // Incluyendo descripción y estado de completado
+      const task = { title, description: '', completed: false, list_id: taskList.id }; 
       this.taskService.addTask(task).subscribe(
         () => {
           this.newTaskTitles[taskList.id] = '';
