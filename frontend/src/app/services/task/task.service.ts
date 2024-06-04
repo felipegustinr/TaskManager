@@ -15,21 +15,31 @@ export class TaskService {
   getAllTasks(): Observable<any> {
     let route = [environment.apiUrl, 'task'].join('/');
     return this.http.get(route);
-  };
+  }
+
   getTaskById(id: any): Observable<any> {
     let route = [environment.apiUrl, 'task', id].join('/');
     return this.http.get(route);
-  };
+  }
+
   addTask(task: any): Observable<any> {
     let route = [environment.apiUrl, 'task'].join('/');
     return this.http.post(route, task);
-  };
+  }
+
   editTask(task: any, id: any): Observable<any> {
     let route = [environment.apiUrl, 'task', id].join('/');
     return this.http.put(route, task);
-  };
+  }
+
   deleteTask(id: any): Observable<any> {
     let route = [environment.apiUrl, 'task', id].join('/');
     return this.http.delete(route);
+  }
+
+  // Método para obtener todas las tareas asociadas con una lista de tareas específica
+  getTasksByListId(listId: number): Observable<any> {
+    let route = [environment.apiUrl, 'task', 'list', listId].join('/');
+    return this.http.get(route);
   }
 }

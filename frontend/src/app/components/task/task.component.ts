@@ -7,7 +7,7 @@ interface TaskList {
   id: number;
   title: string;
   user_id: number;
-  task: any[] 
+  tasks: any[];
 }
 
 @Component({
@@ -18,10 +18,8 @@ interface TaskList {
 export class TaskComponent implements OnInit {
   public taskLists: TaskList[] = [];
   public newTaskListTitle: string = '';
-  public newTaskTitle: string = '';
+  public newTaskTitles: { [key: number]: string } = {}; 
   
-  
-
   constructor(
     private taskListService: TaskListService,
     private taskService: TaskService,
@@ -37,7 +35,16 @@ export class TaskComponent implements OnInit {
     this.taskListService.getAllTaskLists().subscribe(
       (data: TaskList[]) => {
         this.taskLists = data.filter((taskList: any) => taskList.user_id === userId!);
-
+        this.taskLists.forEach(taskList => {
+          this.taskService.getTasksByListId(taskList.id).subscribe(
+            (tasks: any[]) => {
+              taskList.tasks = tasks;
+            },
+            error => {
+              console.error('Error loading tasks for task list', error);
+            }
+          );
+        });
       },
       error => {
         console.error('Error loading task lists:', error);
@@ -62,11 +69,12 @@ export class TaskComponent implements OnInit {
   }
 
   createTask(taskList: TaskList) {
-    const title = this.newTaskTitle.trim();
+    const title = this.newTaskTitles[taskList.id]?.trim();
     if (title) {
-      this.taskService.addTask({ title, list_id: taskList.id }).subscribe(
+      const task = { title, description: '', completed: false, list_id: taskList.id }; // Incluyendo descripción y estado de completado
+      this.taskService.addTask(task).subscribe(
         () => {
-          this.newTaskTitle = '';
+          this.newTaskTitles[taskList.id] = '';
           this.loadTaskLists();
         },
         error => {

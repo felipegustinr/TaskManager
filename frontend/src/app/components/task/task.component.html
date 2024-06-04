@@ -1,20 +1,14 @@
-<div class="task-container">
-    <!-- Input para agregar una nueva lista de tareas -->
-    <input type="text" [(ngModel)]="newTaskListTitle" placeholder="Nueva lista de tareas">
-    <button (click)="createTaskList()">Agregar Lista</button>
-  
-    <!-- Mostrar todas las listas de tareas del usuario -->
-    <div *ngFor="let taskList of taskLists" class="task-list">
-      <h3>{{ taskList.title }}</h3>
-  
-      <!-- Input para agregar una nueva tarea a esta lista -->
-      <input type="text" [(ngModel)]="newTaskTitle" placeholder="Nueva tarea">
-      <button (click)="createTask(taskList)">Agregar Tarea</button>
-  
-      <!-- Mostrar todas las tareas de esta lista -->
-      <ul>
-        <li *ngFor="let task of taskList.task">{{ task.title }}</li>
+<div class="container mt-5">
+  <div class="card mb-3" *ngFor="let taskList of taskLists">
+    <div class="card-body">
+      <h3 class="card-title">{{ taskList.title }}</h3>
+      <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="newTaskTitles[taskList.id]" placeholder="Nueva tarea">
+      </div>
+      <button class="btn btn-primary mt-2" (click)="createTask(taskList)">Agregar Tarea</button>
+      <ul class="list-group mt-3">
+        <li *ngFor="let task of taskList.tasks" class="list-group-item">{{ task.title }}</li>
       </ul>
     </div>
   </div>
-  
+</div>
