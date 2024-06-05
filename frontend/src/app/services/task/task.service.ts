@@ -18,8 +18,13 @@ export class TaskService {
   }
 
   getTasksByListId(listId: number): Observable<any> {
-    let route = [environment.apiUrl, 'task', 'list', listId].join('/');
+    let route = [environment.apiUrl, 'task', 'full', listId].join('/');
     return this.http.get(route);
+  }
+
+  getFullTaskList(): Observable <any> {
+    let route= [environment.apiUrl, 'task', 'full'].join('/');
+    return this.http.get(route)
   }
 
   addTask(task: any): Observable<any> {
