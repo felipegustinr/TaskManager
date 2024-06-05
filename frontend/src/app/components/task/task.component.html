@@ -19,5 +19,6 @@
         <li *ngFor="let task of taskList.tasks" class="list-group-item">{{ task.title }}</li>
       </ul>
     </div>
+    <button class="btn btn-success mt-2" (click)="completeTaskList(taskList.id)">Completar Lista</button>
   </div>
 </div>
