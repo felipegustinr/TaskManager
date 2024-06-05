@@ -36,7 +36,7 @@ export class TaskComponent implements OnInit {
       (data: TaskList[]) => {
         this.taskLists = data.filter((taskList: any) => taskList.user_id === userId!);
         this.taskLists.forEach(taskList => {
-          this.taskService.getTasksByListId(taskList.id).subscribe(
+          this.taskService.getFullTaskList().subscribe(
             (tasks: any[]) => {
               taskList.tasks = tasks;
             },
@@ -82,5 +82,16 @@ export class TaskComponent implements OnInit {
         }
       );
     }
+  }
+
+  completeTaskList(taskListId: number) {
+    this.taskListService.deleteTaskList(taskListId).subscribe(
+      () => {
+        this.loadTaskLists();
+      },
+      error => {
+        console.error('Error deleting task list:', error);
+      }
+    );
   }
 }
