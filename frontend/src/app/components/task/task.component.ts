@@ -36,7 +36,7 @@ export class TaskComponent implements OnInit {
       (data: TaskList[]) => {
         this.taskLists = data.filter((taskList: any) => taskList.user_id === userId!);
         this.taskLists.forEach(taskList => {
-          this.taskService.getFullTaskList().subscribe(
+          this.taskService.getAllTasks().subscribe(
             (tasks: any[]) => {
               taskList.tasks = tasks;
             },
